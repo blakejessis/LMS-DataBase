@@ -24,6 +24,7 @@ count = 0
 con = sqlite3.connect('lms')
 
 cursor = con.cursor()
+
 # Определение колонок БД
 library_labels = ['Идентификатор книги', 'Название', 'Автор', 'Дата публикации']
 
@@ -210,7 +211,7 @@ class Dialog(QDialog):
             self.line_edit_change_date = QLineEdit()
 
             form_layout = QFormLayout()
-            form_layout.addRow('Идентификатор студента:', self.line_edit_type)
+            form_layout.addRow('Тип изменения:', self.line_edit_type)
             form_layout.addRow('Идентификатор теста:', self.line_edit_test_id)
             form_layout.addRow('Идентификатор студента:', self.line_edit_student_id)
             form_layout.addRow('Идентификатор учителя:', self.line_edit_teacher_id)
@@ -285,96 +286,35 @@ class FilterDialog(QDialog):
     def __init__(self):
         super().__init__()
         self.setWindowTitle('Filter Dialog')
+        form_layout = QFormLayout()
+        def filterall(table_label):
+            self.line_edit_box = QComboBox()
+            self.line_edit_box.addItems(table_label)
+            self.line_edit_comp_box = QComboBox()
+            self.line_edit_value = QLineEdit()
+            self.line_edit_comp_box.addItems(['>', '>=', '=', '<=', '<'])
+            form_layout.addRow('Выберите поле фильтрации:', self.line_edit_box)
+            form_layout.addRow('Выберите знак сравнения', self.line_edit_comp_box)
+            form_layout.addRow('Введите значение для сравнения', self.line_edit_value)
+            
         if table_name == 'library':
-            self.line_edit_box = QComboBox()
-            self.line_edit_box.addItems(library_labels)
-            self.line_edit_comp_box = QComboBox()
-            self.line_edit_value = QLineEdit()
-            self.line_edit_comp_box.addItems(['>', '>=', '=', '<=', '<'])
-            form_layout = QFormLayout()
-            form_layout.addRow('Выберите поле фильтрации:', self.line_edit_box)
-            form_layout.addRow('Выберите знак сравнения', self.line_edit_comp_box)
-            form_layout.addRow('Введите значение для сравнения', self.line_edit_value)
+            filterall(library_labels)
         elif table_name == 'user':
-            self.line_edit_box = QComboBox()
-            self.line_edit_box.addItems(user_labels)
-            self.line_edit_comp_box = QComboBox()
-            self.line_edit_value = QLineEdit()
-            self.line_edit_comp_box.addItems(['>', '>=', '=', '<=', '<'])
-            form_layout = QFormLayout()
-            form_layout.addRow('Выберите поле фильтрации:', self.line_edit_box)
-            form_layout.addRow('Выберите знак сравнения', self.line_edit_comp_box)
-            form_layout.addRow('Введите значение для сравнения', self.line_edit_value)
+            filterall(user_labels)
         elif table_name == 'class':
-            self.line_edit_box = QComboBox()
-            self.line_edit_box.addItems(class_labels)
-            self.line_edit_comp_box = QComboBox()
-            self.line_edit_value = QLineEdit()
-            self.line_edit_comp_box.addItems(['>', '>=', '=', '<=', '<'])
-            form_layout = QFormLayout()
-            form_layout.addRow('Выберите поле фильтрации:', self.line_edit_box)
-            form_layout.addRow('Выберите знак сравнения', self.line_edit_comp_box)
-            form_layout.addRow('Введите значение для сравнения', self.line_edit_value)
+            filterall(class_labels)
         elif table_name == 'student':
-            self.line_edit_box = QComboBox()
-            self.line_edit_box.addItems(student_labels)
-            self.line_edit_comp_box = QComboBox()
-            self.line_edit_value = QLineEdit()
-            self.line_edit_comp_box.addItems(['>', '>=', '=', '<=', '<'])
-            form_layout = QFormLayout()
-            form_layout.addRow('Выберите поле фильтрации:', self.line_edit_box)
-            form_layout.addRow('Выберите знак сравнения', self.line_edit_comp_box)
-            form_layout.addRow('Введите значение для сравнения', self.line_edit_value)
+            filterall(student_labels)
         elif table_name == 'teacher':
-            self.line_edit_box = QComboBox()
-            self.line_edit_box.addItems(teacher_labels)
-            self.line_edit_comp_box = QComboBox()
-            self.line_edit_value = QLineEdit()
-            self.line_edit_comp_box.addItems(['>', '>=', '=', '<=', '<'])
-            form_layout = QFormLayout()
-            form_layout.addRow('Выберите поле фильтрации:', self.line_edit_box)
-            form_layout.addRow('Выберите знак сравнения', self.line_edit_comp_box)
-            form_layout.addRow('Введите значение для сравнения', self.line_edit_value)
+            filterall(teacher_labels)
         elif table_name == 'lesson':
-            self.line_edit_box = QComboBox()
-            self.line_edit_box.addItems(lesson_labels)
-            self.line_edit_comp_box = QComboBox()
-            self.line_edit_value = QLineEdit()
-            self.line_edit_comp_box.addItems(['>', '>=', '=', '<=', '<'])
-            form_layout = QFormLayout()
-            form_layout.addRow('Выберите поле фильтрации:', self.line_edit_box)
-            form_layout.addRow('Выберите знак сравнения', self.line_edit_comp_box)
-            form_layout.addRow('Введите значение для сравнения', self.line_edit_value)
+            filterall(lesson_labels)
         elif table_name == 'test':
-            self.line_edit_box = QComboBox()
-            self.line_edit_box.addItems(test_labels)
-            self.line_edit_comp_box = QComboBox()
-            self.line_edit_value = QLineEdit()
-            self.line_edit_comp_box.addItems(['>', '>=', '=', '<=', '<'])
-            form_layout = QFormLayout()
-            form_layout.addRow('Выберите поле фильтрации:', self.line_edit_box)
-            form_layout.addRow('Выберите знак сравнения', self.line_edit_comp_box)
-            form_layout.addRow('Введите значение для сравнения', self.line_edit_value)
+            filterall(test_labels)
         elif table_name == 'testres':
-            self.line_edit_box = QComboBox()
-            self.line_edit_box.addItems(testres_labels)
-            self.line_edit_comp_box = QComboBox()
-            self.line_edit_value = QLineEdit()
-            self.line_edit_comp_box.addItems(['>', '>=', '=', '<=', '<'])
-            form_layout = QFormLayout()
-            form_layout.addRow('Выберите поле фильтрации:', self.line_edit_box)
-            form_layout.addRow('Выберите знак сравнения', self.line_edit_comp_box)
-            form_layout.addRow('Введите значение для сравнения', self.line_edit_value)
+            filterall(testres_labels)
         elif table_name == 'changeres':
-            self.line_edit_box = QComboBox()
-            self.line_edit_box.addItems(changeres_labels)
-            self.line_edit_comp_box = QComboBox()
-            self.line_edit_value = QLineEdit()
-            self.line_edit_comp_box.addItems(['>', '>=', '=', '<=', '<'])
-            form_layout = QFormLayout()
-            form_layout.addRow('Выберите поле фильтрации:', self.line_edit_box)
-            form_layout.addRow('Выберите знак сравнения', self.line_edit_comp_box)
-            form_layout.addRow('Введите значение для сравнения', self.line_edit_value)
+            filterall(changeres_labels)
 
         button_box = QDialogButtonBox(QDialogButtonBox.Ok | QDialogButtonBox.Cancel)
         button_box.accepted.connect(self.accept)
@@ -418,48 +358,55 @@ class MainWindow(QMainWindow):  # главное окно
             cursor.execute(f'INSERT INTO library VALUES (NULL, "{values[0]}", "{values[1]}", "{values[2]}");')
             print('запрос успешен')
             self._showTable_library()
+            con.commit()
         elif table_name == 'user':
             inputDialog = Dialog()
             rez = inputDialog.exec()
             if not rez:
                 msg = QMessageBox.information(self, 'Внимание', 'Диалог сброшен.')
                 return
-
             email = str(inputDialog.line_edit_email.text())
             number = str(inputDialog.line_edit_number.text())
             username = str(inputDialog.line_edit_username.text())
             password = str(inputDialog.line_edit_password.text())
             image = str(inputDialog.line_edit_image.text())
-
             if not email or not number or not username or not password:
                 msg = QMessageBox.information(self, 'Внимание', 'Заполните пожалуйста все поля.')
                 return
             values = [email, number, username, password, image]
             print(values[1])
-            # print(type(values))
+            cursor.execute(f'Select email from user where email = "{values[0]}";')
+            check = len(cursor.fetchone())
+            if check == 1:
+                msg = QMessageBox.information(self, 'Внимание', 'Введенный адрес уже используется.')
+                return
+            cursor.execute(f'Select number from user where number = "{values[1]}";')
+            check = len(cursor.fetchone())
+            if check == 1:
+                msg = QMessageBox.information(self, 'Внимание', 'Введенный адрес уже используется.')
+                return
             cursor.execute(
                 f'INSERT INTO user VALUES (NULL, "{values[0]}", "{values[1]}", "{values[2]}", "{values[3]}", "{values[4]}");')
             print('запрос успешен')
             self._showTable_user()
+            con.commit()
         elif table_name == 'class':
             inputDialog = Dialog()
             rez = inputDialog.exec()
             if not rez:
                 msg = QMessageBox.information(self, 'Внимание', 'Диалог сброшен.')
                 return
-
             title = str(inputDialog.line_edit_title_class.text())
-
             if not title:
                 msg = QMessageBox.information(self, 'Внимание', 'Заполните пожалуйста все поля.')
                 return
             values = [title]
             print(values[0])
-            # print(type(values))
             cursor.execute(
                 f'INSERT INTO class VALUES (NULL, "{values[0]}");')
             print('запрос успешен')
             self._showTable_class()
+            con.commit()
         elif table_name == 'student':
             inputDialog = Dialog()
             rez = inputDialog.exec()
@@ -477,31 +424,29 @@ class MainWindow(QMainWindow):  # главное окно
                 return
             values =  [user_id, class_id, name]
             print(values[1])
-            # print([type(value) for value in values])
             cursor.execute(f'INSERT INTO student VALUES (NULL, {values[0]}, {values[1]}, "{values[2]}");')
             print('запрос успешен')
             self._showTable_student()
+            con.commit()
         elif table_name == 'teacher':
             inputDialog = Dialog()
             rez = inputDialog.exec()
             if not rez:
                 msg = QMessageBox.information(self, 'Внимание', 'Диалог сброшен.')
                 return
-
             name = str(inputDialog.line_edit_name_teacher.text())
             work_exp = str(inputDialog.line_edit_work_exp.text())
             user_id = int(inputDialog.line_edit_user_id.text())
             class_id = int(inputDialog.line_edit_class_id.text())
-
             if not name or not work_exp or not user_id or not class_id:
                 msg = QMessageBox.information(self, 'Внимание', 'Заполните пожалуйста все поля.')
                 return
             values =  [work_exp, user_id, class_id, name]
             print(values[1])
-            # print([type(value) for value in values])
             cursor.execute(f'INSERT INTO teacher VALUES (NULL, "{values[0]}", {values[1]}, {values[2]}, "{values[3]}");')
             print('запрос успешен')
             self._showTable_teacher()
+            con.commit()
         elif table_name == 'lesson':
             inputDialog = Dialog()
             rez = inputDialog.exec()
@@ -519,10 +464,10 @@ class MainWindow(QMainWindow):  # главное окно
                 return
             values =  [teacher_id, title, date, class_id]
             print(values[1])
-            # print([type(value) for value in values])
             cursor.execute(f'INSERT INTO lesson VALUES (NULL, {values[0]}, "{values[1]}", "{values[2]}", {values[3]});')
             print('запрос успешен')
             self._showTable_lesson()
+            con.commit()
         elif table_name == 'test':
             inputDialog = Dialog()
             rez = inputDialog.exec()
@@ -538,10 +483,10 @@ class MainWindow(QMainWindow):  # главное окно
                 return
             values =  [teacher_id, title]
             print(values[1])
-            # print([type(value) for value in values])
             cursor.execute(f'INSERT INTO test VALUES (NULL, {values[0]}, "{values[1]}");')
             print('запрос успешен')
             self._showTable_test()
+            con.commit()
         elif table_name == 'testres':
             inputDialog = Dialog()
             rez = inputDialog.exec()
@@ -559,10 +504,10 @@ class MainWindow(QMainWindow):  # главное окно
                 return
             values =  [student_id, test_id, teacher_id, grade]
             print(values[1])
-            # print([type(value) for value in values])
             cursor.execute(f'INSERT INTO testres VALUES (NULL, {values[0]}, {values[1]}, {values[2]}, {values[3]});')
             print('запрос успешен')
             self._showTable_testres()
+            con.commit()
         elif table_name == 'changeres':
             inputDialog = Dialog()
             rez = inputDialog.exec()
@@ -575,17 +520,16 @@ class MainWindow(QMainWindow):  # главное окно
             student_id = int(inputDialog.line_edit_student_id.text())
             teacher_id = str(inputDialog.line_edit_teacher_id.text())
             grade = int(inputDialog.line_edit_change_grade.text())
-            change_data = datetime(inputDialog.line_edit_change_grade.text())
 
-            if not type or not test_id or not student_id or not teacher_id or not grade or not change_data:
+            if not type or not test_id or not student_id or not teacher_id or not grade:
                 msg = QMessageBox.information(self, 'Внимание', 'Заполните пожалуйста все поля.')
                 return
-            values =  [type, test_id, student_id, teacher_id, grade, change_data]
+            values =  [type, test_id, student_id, teacher_id, grade]
             print(values[1])
-            # print([type(value) for value in values])
-            cursor.execute(f'INSERT INTO changeres VALUES (NULL, "{values[0]}", {values[1]}, {values[2]}, {values[2]}, {values[2]}, "{values[2]}");')
+            cursor.execute(f'INSERT INTO changeres VALUES (NULL, "{values[0]}", {values[1]}, {values[2]}, {values[3]}, {values[4]}, datetime("now"));')
             print('запрос успешен')
             self._showTable_changeres()
+            con.commit()
 
 
     def deleteRow(self):
@@ -599,6 +543,7 @@ class MainWindow(QMainWindow):  # главное окно
             print(delete_id)
             cursor.execute(f'DELETE FROM library WHERE book_id = {delete_id}')
             self._showTable_library()
+            con.commit()
         elif table_name == 'user':
             inputDialog = RemoveDialog()
             rez = inputDialog.exec()
@@ -609,6 +554,7 @@ class MainWindow(QMainWindow):  # главное окно
             print(delete_id)
             cursor.execute(f'DELETE FROM user WHERE user_id = {delete_id}')
             self._showTable_user()
+            con.commit()
         elif table_name == 'class':
             inputDialog = RemoveDialog()
             rez = inputDialog.exec()
@@ -619,6 +565,7 @@ class MainWindow(QMainWindow):  # главное окно
             print(delete_id)
             cursor.execute(f'DELETE FROM class WHERE class_id = {delete_id}')
             self._showTable_class()
+            con.commit()
         elif table_name == 'student':
             inputDialog = RemoveDialog()
             rez = inputDialog.exec()
@@ -629,6 +576,7 @@ class MainWindow(QMainWindow):  # главное окно
             print(delete_id)
             cursor.execute(f'DELETE FROM student WHERE student_id = {delete_id}')
             self._showTable_student()
+            con.commit()
         elif table_name == 'teacher':
             inputDialog = RemoveDialog()
             rez = inputDialog.exec()
@@ -639,6 +587,7 @@ class MainWindow(QMainWindow):  # главное окно
             print(delete_id)
             cursor.execute(f'DELETE FROM teacher WHERE teacher_id = {delete_id}')
             self._showTable_teacher()
+            con.commit()
         elif table_name == 'lesson':
             inputDialog = RemoveDialog()
             rez = inputDialog.exec()
@@ -649,6 +598,7 @@ class MainWindow(QMainWindow):  # главное окно
             print(delete_id)
             cursor.execute(f'DELETE FROM lesson WHERE lesson_id = {delete_id}')
             self._showTable_lesson()
+
         elif table_name == 'test':
             inputDialog = RemoveDialog()
             rez = inputDialog.exec()
@@ -659,16 +609,18 @@ class MainWindow(QMainWindow):  # главное окно
             print(delete_id)
             cursor.execute(f'DELETE FROM test WHERE test_id = {delete_id}')
             self._showTable_test()
+            con.commit()
         elif table_name == 'testres':
             inputDialog = RemoveDialog()
             rez = inputDialog.exec()
             if not rez:
                 msg = QMessageBox.information(self, 'Внимание', 'Диалог сброшен.')
                 return
-            delete_id = int(inputDialog.line_edit_testres_id.text())
+            delete_id = int(inputDialog.line_edit_res_id.text())
             print(delete_id)
-            cursor.execute(f'DELETE FROM testres WHERE testres_id = {delete_id}')
+            cursor.execute(f'DELETE FROM testres WHERE res_id = {delete_id}')
             self._showTable_testres()
+            con.commit()
         elif table_name == 'changeres':
             inputDialog = RemoveDialog()
             rez = inputDialog.exec()
@@ -679,6 +631,7 @@ class MainWindow(QMainWindow):  # главное окно
             print(delete_id)
             cursor.execute(f'DELETE FROM changeres WHERE change_id = {delete_id}')
             self._showTable_changeres()
+            con.commit()
 
 
     def filterRows(self):
@@ -898,13 +851,6 @@ class MainWindow(QMainWindow):  # главное окно
             print(range(row, rows))
             for i in range(row, rows):
                 self.table.setRowHidden(i, True)
-
-
-
-
-
-
-
 
 
 
@@ -1515,7 +1461,7 @@ class MainWindow(QMainWindow):  # главное окно
         self.search.resize(500, 20)
         self.search.textChanged.connect(self.findName)
 
-
+    
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     app.setStyle('Fusion')
