@@ -113,7 +113,7 @@ class HelloWindow(QMainWindow):
         self.label.move(700, 0)
         self.label.setFont(QtGui.QFont("<b>Arial", 40))
         self.label.setStyleSheet('color:White')
-        self.continueButton = QPushButton('Начать работу с БД EzEng', self)
+        self.continueButton = QPushButton('Начать работу', self)
         self.continueButton.setStyleSheet('color:blue')
         self.continueButton.resize(200 ,100)
         self.continueButton.move(960, 150)
@@ -886,16 +886,16 @@ class MainWindow(QMainWindow):  # главное окно
                 self.table.setItem(row, col, QTableWidgetItem(str((sqlRow[col]))))
             row += 1
         self.addButton = QPushButton('Добавить', self)
-        self.addButton.move(1650, 450)
-        self.addButton.resize(200, 50)
+        self.addButton.move(700, 30)
+        self.addButton.resize(150, 25)
         self.addButton.show()
         self.selectButton = QPushButton('Фильтр', self)
-        self.selectButton.move(1650, 550)
-        self.selectButton.resize(200, 50)
+        self.selectButton.move(900, 30)
+        self.selectButton.resize(150, 25)
         self.selectButton.show()
         self.deleteButton = QPushButton('Удалить', self)
-        self.deleteButton.move(1650, 650)
-        self.deleteButton.resize(200, 50)
+        self.deleteButton.move(1100, 30)
+        self.deleteButton.resize(150, 25)
         self.deleteButton.show()
         self.addButton.clicked.connect(self.addRow)
         self.deleteButton.clicked.connect(self.deleteRow)
@@ -919,20 +919,21 @@ class MainWindow(QMainWindow):  # главное окно
                 self.table.setItem(row, col, QTableWidgetItem(str((sqlRow[col]))))
             row += 1
         self.addButton = QPushButton('Добавить', self)
-        self.addButton.move(1650, 450)
-        self.addButton.resize(200, 50)
+        self.addButton.move(700, 30)
+        self.addButton.resize(150, 25)
         self.addButton.show()
         self.selectButton = QPushButton('Фильтр', self)
-        self.selectButton.move(1650, 550)
-        self.selectButton.resize(200, 50)
+        self.selectButton.move(900, 30)
+        self.selectButton.resize(150, 25)
         self.selectButton.show()
         self.deleteButton = QPushButton('Удалить', self)
-        self.deleteButton.move(1650, 650)
-        self.deleteButton.resize(200, 50)
+        self.deleteButton.move(1100, 30)
+        self.deleteButton.resize(150, 25)
         self.deleteButton.show()
         self.addButton.clicked.connect(self.addRow)
         self.deleteButton.clicked.connect(self.deleteRow)
         self.selectButton.clicked.connect(self.filterRows)
+
 
     def _showTable_student(self):
         global table_name
@@ -952,20 +953,21 @@ class MainWindow(QMainWindow):  # главное окно
                 self.table.setItem(row, col, QTableWidgetItem(str((sqlRow[col]))))
             row += 1
         self.addButton = QPushButton('Добавить', self)
-        self.addButton.move(1650, 450)
-        self.addButton.resize(200, 50)
+        self.addButton.move(700, 30)
+        self.addButton.resize(150, 25)
         self.addButton.show()
         self.selectButton = QPushButton('Фильтр', self)
-        self.selectButton.move(1650, 550)
-        self.selectButton.resize(200, 50)
+        self.selectButton.move(900, 30)
+        self.selectButton.resize(150, 25)
         self.selectButton.show()
         self.deleteButton = QPushButton('Удалить', self)
-        self.deleteButton.move(1650, 650)
-        self.deleteButton.resize(200, 50)
+        self.deleteButton.move(1100, 30)
+        self.deleteButton.resize(150, 25)
         self.deleteButton.show()
         self.addButton.clicked.connect(self.addRow)
         self.deleteButton.clicked.connect(self.deleteRow)
         self.selectButton.clicked.connect(self.filterRows)
+
     def _showTable_teacher(self):
         global table_name
         table_name = 'teacher'
@@ -984,20 +986,21 @@ class MainWindow(QMainWindow):  # главное окно
                 self.table.setItem(row, col, QTableWidgetItem(str((sqlRow[col]))))
             row += 1
         self.addButton = QPushButton('Добавить', self)
-        self.addButton.move(1650, 450)
-        self.addButton.resize(200, 50)
+        self.addButton.move(700, 30)
+        self.addButton.resize(150, 25)
         self.addButton.show()
         self.selectButton = QPushButton('Фильтр', self)
-        self.selectButton.move(1650, 550)
-        self.selectButton.resize(200, 50)
+        self.selectButton.move(900, 30)
+        self.selectButton.resize(150, 25)
         self.selectButton.show()
         self.deleteButton = QPushButton('Удалить', self)
-        self.deleteButton.move(1650, 650)
-        self.deleteButton.resize(200, 50)
+        self.deleteButton.move(1100, 30)
+        self.deleteButton.resize(150, 25)
         self.deleteButton.show()
         self.addButton.clicked.connect(self.addRow)
         self.deleteButton.clicked.connect(self.deleteRow)
         self.selectButton.clicked.connect(self.filterRows)
+
 
     def _showTable_lesson(self):
         global table_name
@@ -1017,20 +1020,21 @@ class MainWindow(QMainWindow):  # главное окно
                 self.table.setItem(row, col, QTableWidgetItem(str((sqlRow[col]))))
             row += 1
         self.addButton = QPushButton('Добавить', self)
-        self.addButton.move(1650, 450)
-        self.addButton.resize(200, 50)
+        self.addButton.move(700, 30)
+        self.addButton.resize(150, 25)
         self.addButton.show()
         self.selectButton = QPushButton('Фильтр', self)
-        self.selectButton.move(1650, 550)
-        self.selectButton.resize(200, 50)
+        self.selectButton.move(900, 30)
+        self.selectButton.resize(150, 25)
         self.selectButton.show()
         self.deleteButton = QPushButton('Удалить', self)
-        self.deleteButton.move(1650, 650)
-        self.deleteButton.resize(200, 50)
+        self.deleteButton.move(1100, 30)
+        self.deleteButton.resize(150, 25)
         self.deleteButton.show()
         self.addButton.clicked.connect(self.addRow)
         self.deleteButton.clicked.connect(self.deleteRow)
         self.selectButton.clicked.connect(self.filterRows)
+
 
     def _showTable_test(self):
         global table_name
@@ -1050,20 +1054,21 @@ class MainWindow(QMainWindow):  # главное окно
                 self.table.setItem(row, col, QTableWidgetItem(str((sqlRow[col]))))
             row += 1
         self.addButton = QPushButton('Добавить', self)
-        self.addButton.move(1650, 450)
-        self.addButton.resize(200, 50)
+        self.addButton.move(700, 30)
+        self.addButton.resize(150, 25)
         self.addButton.show()
         self.selectButton = QPushButton('Фильтр', self)
-        self.selectButton.move(1650, 550)
-        self.selectButton.resize(200, 50)
+        self.selectButton.move(900, 30)
+        self.selectButton.resize(150, 25)
         self.selectButton.show()
         self.deleteButton = QPushButton('Удалить', self)
-        self.deleteButton.move(1650, 650)
-        self.deleteButton.resize(200, 50)
+        self.deleteButton.move(1100, 30)
+        self.deleteButton.resize(150, 25)
         self.deleteButton.show()
         self.addButton.clicked.connect(self.addRow)
         self.deleteButton.clicked.connect(self.deleteRow)
         self.selectButton.clicked.connect(self.filterRows)
+
 
     def _showTable_testres(self):
         global table_name
@@ -1083,20 +1088,21 @@ class MainWindow(QMainWindow):  # главное окно
                 self.table.setItem(row, col, QTableWidgetItem(str((sqlRow[col]))))
             row += 1
         self.addButton = QPushButton('Добавить', self)
-        self.addButton.move(1650, 450)
-        self.addButton.resize(200, 50)
+        self.addButton.move(700, 30)
+        self.addButton.resize(150, 25)
         self.addButton.show()
         self.selectButton = QPushButton('Фильтр', self)
-        self.selectButton.move(1650, 550)
-        self.selectButton.resize(200, 50)
+        self.selectButton.move(900, 30)
+        self.selectButton.resize(150, 25)
         self.selectButton.show()
         self.deleteButton = QPushButton('Удалить', self)
-        self.deleteButton.move(1650, 650)
-        self.deleteButton.resize(200, 50)
+        self.deleteButton.move(1100, 30)
+        self.deleteButton.resize(150, 25)
         self.deleteButton.show()
         self.addButton.clicked.connect(self.addRow)
         self.deleteButton.clicked.connect(self.deleteRow)
         self.selectButton.clicked.connect(self.filterRows)
+
 
     def _showTable_changeres(self):
         global table_name
@@ -1116,20 +1122,21 @@ class MainWindow(QMainWindow):  # главное окно
                 self.table.setItem(row, col, QTableWidgetItem(str((sqlRow[col]))))
             row += 1
         self.addButton = QPushButton('Добавить', self)
-        self.addButton.move(1650, 450)
-        self.addButton.resize(200, 50)
+        self.addButton.move(700, 30)
+        self.addButton.resize(150, 25)
         self.addButton.show()
         self.selectButton = QPushButton('Фильтр', self)
-        self.selectButton.move(1650, 550)
-        self.selectButton.resize(200, 50)
+        self.selectButton.move(900, 30)
+        self.selectButton.resize(150, 25)
         self.selectButton.show()
         self.deleteButton = QPushButton('Удалить', self)
-        self.deleteButton.move(1650, 650)
-        self.deleteButton.resize(200, 50)
+        self.deleteButton.move(1100, 30)
+        self.deleteButton.resize(150, 25)
         self.deleteButton.show()
         self.addButton.clicked.connect(self.addRow)
         self.deleteButton.clicked.connect(self.deleteRow)
         self.selectButton.clicked.connect(self.filterRows)
+
 
     def _showTable_library(self):
         global table_name
@@ -1149,20 +1156,21 @@ class MainWindow(QMainWindow):  # главное окно
                 self.table.setItem(row, col, QTableWidgetItem(str((sqlRow[col]))))
             row += 1
         self.addButton = QPushButton('Добавить', self)
-        self.addButton.move(1650, 450)
-        self.addButton.resize(200, 50)
+        self.addButton.move(700, 30)
+        self.addButton.resize(150, 25)
         self.addButton.show()
         self.selectButton = QPushButton('Фильтр', self)
-        self.selectButton.move(1650, 550)
-        self.selectButton.resize(200, 50)
+        self.selectButton.move(900, 30)
+        self.selectButton.resize(150, 25)
         self.selectButton.show()
         self.deleteButton = QPushButton('Удалить', self)
-        self.deleteButton.move(1650, 650)
-        self.deleteButton.resize(200, 50)
+        self.deleteButton.move(1100, 30)
+        self.deleteButton.resize(150, 25)
         self.deleteButton.show()
         self.addButton.clicked.connect(self.addRow)
         self.deleteButton.clicked.connect(self.deleteRow)
         self.selectButton.clicked.connect(self.filterRows)
+
 
 
     # Сортировка таблицы по нажатию на столбец
